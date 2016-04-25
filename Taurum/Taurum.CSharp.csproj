@@ -68,21 +68,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\DungeonManager.cs" />
     <Compile Include="Assets\Scripts\Behaviours\CameraController.cs" />
     <Compile Include="Assets\Scripts\Behaviours\DungeonGenerator.cs" />
-    <Compile Include="Assets\Scripts\Behaviours\EnemyVisual.cs" />
+    <Compile Include="Assets\Scripts\Behaviours\DungeonManager.cs" />
     <Compile Include="Assets\Scripts\Behaviours\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Behaviours\HUDManager.cs" />
     <Compile Include="Assets\Scripts\Behaviours\KeyboardController.cs" />
-    <Compile Include="Assets\Scripts\Behaviours\PlayerVisual.cs" />
+    <Compile Include="Assets\Scripts\Behaviours\Visuals\EnemyVisual.cs" />
+    <Compile Include="Assets\Scripts\Behaviours\Visuals\PlayerVisual.cs" />
+    <Compile Include="Assets\Scripts\Behaviours\Visuals\BaseVisual.cs" />
+    <Compile Include="Assets\Scripts\Data\EnemyData.cs" />
+    <Compile Include="Assets\Scripts\Data\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Models\Dungeon.cs" />
-    <Compile Include="Assets\Scripts\Models\IEntity.cs" />
     <Compile Include="Assets\Scripts\Models\RoomTemplate.cs" />
+    <Compile Include="Assets\Scripts\Utils\BattleCalculator.cs" />
     <Compile Include="Assets\Scripts\Utils\CorridorTracer.cs" />
+    <Compile Include="Assets\Scripts\Utils\Global.cs" />
     <Compile Include="Assets\Scripts\Utils\RoomReader.cs" />
+    <Compile Include="Assets\Scripts\Utils\Serializer.cs" />
+    <Compile Include="Assets\Scripts\Utils\TDictionary.cs" />
+    <Compile Include="Assets\Scripts\Utils\Tuple.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Rooms\rooms.txt" />
+    <None Include="Assets\Resources\saves\stryfe.txt" />
     <None Include="Assets\packages\Unity.Newtonsoft.Json.7.0.0.0\lib\net35-Client\Unity.Newtonsoft.Json.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

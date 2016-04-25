@@ -6,21 +6,23 @@ using System.Collections.Generic;
 [RequireComponent(typeof(KeyboardController))]
 public class GameManager : MonoBehaviour {
     
-    // Managers, controllers and generators
+    // managers, controllers and generators
     DungeonGenerator generator;
     KeyboardController controller;
     CameraController cameraController;
     DungeonManager dungeonManager;
+    HUDManager hudManager;
 
-    // Game flow
+    // game flow
     Command playerAction;
     bool waitForAction;
-    int turn;
+    public int turn;
 
     void Awake()
     {
         generator = GetComponent<DungeonGenerator>();
         cameraController = Camera.main.GetComponent<CameraController>();
+        hudManager = GetComponent<HUDManager>();
 
         controller = GetComponent<KeyboardController>();
         controller.CommandPressed += KeyboardController_CommandPressed;
@@ -28,14 +30,40 @@ public class GameManager : MonoBehaviour {
 
     void Start()
     {
+        // creates the dungeon ambient
         dungeonManager = generator.Generate();
         dungeonManager.PlayerMoved += DungeonManager_PlayerMoved;
         dungeonManager.Setup();
 
+        // registers events
         dungeonManager.player.EntityTick += Player_EntityTick;
+        
+        // sets the player data
+        dungeonManager.player.data = CreatePlaceholderPlayer();
 
+        // updates the HUD
+        hudManager.UpdateName(dungeonManager.player.data.name);
+        hudManager.UpdateHP(dungeonManager.player.data.Current(TStat.HP));
+        hudManager.UpdateMP(dungeonManager.player.data.Current(TStat.MP));
+
+        // prepares the turn
         waitForAction = true;
         turn = 0;
+        hudManager.UpdateTurn(turn);
+    }
+
+    PlayerData CreatePlaceholderPlayer()
+    {
+        PlayerData pData = new PlayerData();
+        pData.name = "Stryfe";
+
+        pData.attributes[TValue.Base, TAttribute.Strenght] = 1;
+        pData.attributes[TValue.Base, TAttribute.Agility] = 1;
+        pData.attributes[TValue.Base, TAttribute.Intelligence] = 1;
+        
+        pData.Calculate();
+
+        return pData;
     }
 
     private void DungeonManager_PlayerMoved(Vector2 newPosition)
@@ -57,15 +85,17 @@ public class GameManager : MonoBehaviour {
     void Tick()
     {
         // simulates the whole turn
-        List<TickableVisual> entities = dungeonManager.GetEntities();
+        List<BaseVisual> entities = dungeonManager.GetEntities();
 
-        foreach (TickableVisual e in entities)
+        foreach (BaseVisual e in entities)
             e.Tick();
 
         waitForAction = true;
+        turn++;
+        hudManager.UpdateTurn(turn);
     }
 
-    private void Player_EntityTick(TickableVisual visual)
+    private void Player_EntityTick(BaseVisual visual)
     {
         switch (playerAction)
         {

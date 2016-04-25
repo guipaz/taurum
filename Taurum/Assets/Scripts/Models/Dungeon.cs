@@ -26,8 +26,9 @@ public class Dungeon
     {
         if (seed == null)
             seed = DateTime.Now.Ticks.ToString();
-
-        random = new System.Random(seed.GetHashCode());
+        
+        Global.random = new System.Random(seed.GetHashCode());
+        random = Global.random;
 
         Debug.Log("Dungeon seed: " + seed);
 
