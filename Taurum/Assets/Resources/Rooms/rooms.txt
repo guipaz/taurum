@@ -1,0 +1,80 @@
+# Rooms
+:start_room
+tags simple
+:start_tiles
+-----------
+-xxxxxxxxx-
+-xxxxxxxxx-
+-xxxxxx-xxo
+-xxxxxx-xx-
+-xxxxxx-xx-
+-----{-----
+:end_tiles
+:end_room
+
+:start_room
+tags simple
+:start_tiles
+     -o-    
+ -----x-----
+--xxxxxxxxx-
+oxxxxxxxxxx-
+------------
+:end_tiles
+:end_room
+
+:start_room
+tags simple
+:start_tiles
+   -o--   
+----xx----
+--xxxxxx--
+-xxxxxxxx-
+-xxxxxxxx-
+--xxxxxx--
+----------
+:end_tiles
+:end_room
+
+:start_room
+tags simple
+:start_tiles
+    -o-    
+----xxx----
+--xxxxxxx--
+-xxxxxxxxx-
+-xxxxxxxxx-
+-xxxxxxxxx-
+{xxxxxxxxxo
+--xxxxxxx--
+--------o--
+:end_tiles
+:end_room
+
+:start_room
+tags simple
+:start_tiles
+---------
+--xxxxx--
+-xxxxxxx{
+-xxxxxxx-
+-xxxxxxx-
+oxxxxxxx-
+--xxxxx--
+---------
+:end_tiles
+:end_room
+
+:start_room
+tags simple
+:start_tiles
+  -----  
+--xx-xx--
+oxxx-xxxo
+-xxx-xxx-
+-xxxxxxx-
+-xxxxxxx-
+--xxxxx--
+----o----
+:end_tiles
+:end_room
